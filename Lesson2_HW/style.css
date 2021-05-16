@@ -1,0 +1,38 @@
+header {
+    padding: 10px 30px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #000000;
+    margin-bottom: 50px;
+}
+
+.goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #faf0b8;
+}
+
+.goods-item {
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    background-color: white;
+    min-width: 200px;
+    min-height: 250px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.goods-item h3,
+.goods-item p {
+    text-align: center;
+}
+
+.total-sum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
