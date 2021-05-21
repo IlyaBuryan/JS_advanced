@@ -60,17 +60,10 @@ class GoodsList {
             setTimeout(() => {
                 makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
                     this.goods = goods;
+                    this.render();
                 })
-                setTimeout(() => {
-                    res();
-                }, 100)
-            }, 100)
+            }, 500)
         })
-
-        promise
-            .then(() => {
-                list.render();
-            })
     }
 
     render() {
@@ -144,7 +137,6 @@ class BasketItem extends GoodsItem {
         return `<div class="basket-item"><h3>${this.product_name}</h3><p>${this.price}</p><p>${this.count}</p></div>`;
     }
 }
-
 
 const basket = new Basket();
 
