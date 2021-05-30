@@ -28,7 +28,7 @@
         </div>
       </div>
       <br />
-      Корзина:
+      <!-- Корзина: -->
       <h3>
         Скрыть/показать карзину
         <input type="checkbox" v-model="isVisibleCart" />
