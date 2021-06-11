@@ -1,0 +1,65 @@
+
+1. Поискать как можно сделать сборку webpack НЕ минифицированной
+
+Нашел такое решение, в webpack.config.js прописать:
+
+{
+    optimization: {
+        minimize: false
+    },
+}
+
+
+
+
+
+2. Найти в официальной документации способ автоматически перезапускать webpack при изменении файла. Изменить скрипт build, добавив туда этот способ. Подсказка: при запуске нужно использовать определённый флаг.
+
+Для этого необходимо использовать флаг --watch
+"webpack --watch"
+
+
+
+
+
+4. *Написать конфиг webpack, который будет подключать наш build в файл index.html
+
+Почитал и посмотрел разные конфигурации, которые люди готовят. Приведенная ниже конфигурация создаст папку ./dist, и в ней 3 файла: index.html, style.css, script.js.
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+       test: /\.css$/,
+        use: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: ['css-loader']
+          })
+      }
+    ]
+  },
+  plugins: [ 
+    new ExtractTextPlugin(
+      {filename: 'style.css'}
+    ),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html'
+    })
+  ]
+};
